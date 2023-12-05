@@ -61,7 +61,7 @@ public class GlobalExceptionHandler {
     public CommonResponse handleRuntimeException(RuntimeException e, HttpServletRequest request) {
         String requestURI = request.getRequestURI();
         log.error("请求地址'{}',发生未知异常.", requestURI, e);
-        return CommonResponse.error("服务器开了个小差，请稍后再试~");
+        return CommonResponse.error("后端异常，请联系管理员");
     }
 
     /**
@@ -71,6 +71,6 @@ public class GlobalExceptionHandler {
     public CommonResponse handleException(Exception e, HttpServletRequest request) {
         String requestURI = request.getRequestURI();
         log.error("请求地址'{}',发生系统异常.", requestURI, e);
-        return CommonResponse.error("服务器繁忙，请稍后再试~");
+        return CommonResponse.error("后端异常，请联系管理员");
     }
 }

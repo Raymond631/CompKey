@@ -31,7 +31,7 @@ public class UserController {
      */
     @PostMapping("/login")
     public CommonResponse login(@RequestBody LoginBody loginBody) {
-        captchaService.checkCaptcha(loginBody.getCode(), loginBody.getCodeID());
+        // captchaService.checkCaptcha(loginBody.getCode(), loginBody.getCodeID());
         LoginResp userInfo = userService.checkAccount(loginBody.getUsername(), loginBody.getPassword());
         // 登录
         StpUtil.login(userInfo.getAccount());
@@ -44,7 +44,7 @@ public class UserController {
      */
     @PostMapping("/register")
     public CommonResponse register(@RequestBody LoginBody loginBody) {
-        captchaService.checkCaptcha(loginBody.getCode(), loginBody.getCodeID());
+        // captchaService.checkCaptcha(loginBody.getCode(), loginBody.getCodeID());
         // 密码加密
         String pwdSecret = EncryptionUtils.encode(loginBody.getPassword());
         LoginResp userInfo = userService.register(loginBody.getUsername(), pwdSecret);

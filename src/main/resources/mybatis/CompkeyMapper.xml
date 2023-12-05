@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.csu.compkey.mapper.CompkeyMapper">
+
+    <insert id="saveScore">
+        insert into score(seed_key, comp_key, score)
+        values (#{seedKey}, #{compKey}, #{score}) ON DUPLICATE KEY
+        UPDATE score = score * #{score};
+    </insert>
+    <select id="getScore" resultType="cn.edu.csu.compkey.entity.Score">
+        select *
+        from score
+        where seed_key = #{seed};
+    </select>
+    <select id="selectScoreBySeedAndComp" resultType="java.lang.Double">
+        select score
+        from score
+        where seed_key = #{seedKey}
+          and comp_key = #{compKey};
+    </select>
+</mapper>
