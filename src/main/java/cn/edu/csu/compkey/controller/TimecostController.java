@@ -37,18 +37,23 @@ public class TimecostController {
         return CommonResponse.success("获取成功",histories);
     }
     @DeleteMapping("/history")
-    public CommonResponse historyDel(@RequestParam int serchid){
-        historyService.deleteHistoryById(serchid);
+    public CommonResponse historyDel(@RequestParam int searchid){
+        historyService.deleteHistoryById(searchid);
         return CommonResponse.success("删除成功");
     }
     @GetMapping("/score")
     public CommonResponse getAllScore(){
-        List<Cache> caches=cacheService.getAllCache();
+        List<Cache> caches=cacheService.getAvgScore();
         return CommonResponse.success("获取成功",caches);
     }
-    @DeleteMapping("/score")
+    @DeleteMapping("/cache")
     public CommonResponse cacheDel(@RequestParam String seed){
         cacheService.deleteCacheBySeed(seed);
         return CommonResponse.success("删除成功");
+    }
+    @GetMapping("/cache")
+    public CommonResponse getAllCache(){
+        List<Cache> caches=cacheService.getAllCache();
+        return CommonResponse.success("获取成功",caches);
     }
 }

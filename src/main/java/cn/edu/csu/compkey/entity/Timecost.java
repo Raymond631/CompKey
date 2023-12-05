@@ -16,7 +16,7 @@ public class Timecost {
     @TableId
     private int id;
     private String seed;
-    private int usrid;
+    private int userid;
     private String algorithm;
     private int process;
     private int algtime;
